@@ -2,8 +2,8 @@
 # Conditional build:
 %bcond_with	tests		# build with tests
 %define		kdeappsver	25.08.2
-%define		kframever	5.94.0
-%define		qtver		5.15.2
+%define		kframever	6.14.0
+%define		qtver		6.8.0
 %define		kaname		kontact
 Summary:	kontact
 Name:		ka6-%{kaname}
@@ -15,38 +15,31 @@ Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kan
 # Source0-md5:	72864d243118a2145995743f7388b213
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
-BuildRequires:	Qt6DBus-devel
-BuildRequires:	Qt6Gui-devel >= 5.11.1
-BuildRequires:	Qt6Network-devel >= 5.11.1
-BuildRequires:	Qt6Positioning-devel >= 5.11.1
-BuildRequires:	Qt6PrintSupport-devel >= 5.11.1
-BuildRequires:	Qt6Qml-devel >= 5.11.1
-BuildRequires:	Qt6Quick-devel >= 5.11.1
-BuildRequires:	Qt6WebChannel-devel >= 5.11.1
+BuildRequires:	Qt6DBus-devel >= %{qtver}
 BuildRequires:	Qt6WebEngine-devel
-BuildRequires:	Qt6Widgets-devel
+BuildRequires:	Qt6Widgets-devel >= %{qtver}
 BuildRequires:	cmake >= 3.20
-BuildRequires:	gettext-devel
-BuildRequires:	ka6-akonadi-devel >= %{kdeappsver}
+BuildRequires:	gettext-tools
 BuildRequires:	ka6-grantleetheme-devel >= %{kdeappsver}
 BuildRequires:	ka6-kontactinterface-devel >= %{kdeappsver}
-BuildRequires:	ka6-kpimtextedit-devel >= %{kdeappsver}
 BuildRequires:	ka6-libkdepim-devel >= %{kdeappsver}
+BuildRequires:	ka6-pimcommon-devel >= %{kdeappsver}
 BuildRequires:	kf6-extra-cmake-modules >= %{kframever}
 BuildRequires:	kf6-kcmutils-devel >= %{kframever}
 BuildRequires:	kf6-kcrash-devel >= %{kframever}
 BuildRequires:	kf6-kdbusaddons-devel >= %{kframever}
 BuildRequires:	kf6-kdoctools-devel >= %{kframever}
+BuildRequires:	kf6-kguiaddons-devel >= %{kframever}
+BuildRequires:	kf6-ki18n-devel >= %{kframever}
 BuildRequires:	kf6-kiconthemes-devel >= %{kframever}
-BuildRequires:	kf6-kwindowsystem-devel >= %{kframever}
 BuildRequires:	ninja
 BuildRequires:	qt6-build >= %{qtver}
-BuildRequires:	rpmbuild(macros) >= 1.164
+BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires(post,postun):	desktop-file-utils
-ExcludeArch:	x32 i686
+ExclusiveArch:	%{x8664} aarch64
 %requires_eq_to Qt6Core Qt6Core-devel
 Obsoletes:	ka5-%{kaname} < %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
