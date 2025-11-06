@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	25.08.2
+%define		kdeappsver	25.08.3
 %define		kframever	6.14.0
 %define		qtver		6.8.0
 %define		kaname		kontact
 Summary:	kontact
 Name:		ka6-%{kaname}
-Version:	25.08.2
-Release:	2
+Version:	25.08.3
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	72864d243118a2145995743f7388b213
+# Source0-md5:	1073eb64643c4c90e83fe639c17e6e38
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel >= %{qtver}
@@ -53,10 +53,10 @@ functionality.
 
 %description -l pl.UTF-8
 Kontact jest zintegrowanym rozwiązaniem do zarządzania informacją
-osobistą (PIM). W jego skład wchodzą dobrze znane aplikacje KDE,
-takie jak KMail, KOrganizer i KAddressBook. Mają ujednolicony
-interfejs i dają łatwy dostęp do poczty, listy zadań, książki
-adresowej i innych funkcjonalności PIM.
+osobistą (PIM). W jego skład wchodzą dobrze znane aplikacje KDE, takie
+jak KMail, KOrganizer i KAddressBook. Mają ujednolicony interfejs i
+dają łatwy dostęp do poczty, listy zadań, książki adresowej i innych
+funkcjonalności PIM.
 
 %prep
 %setup -q -n %{kaname}-%{version}
@@ -96,7 +96,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kontact
 %ghost %{_libdir}/libkontactprivate.so.6
-%attr(755,root,root) %{_libdir}/libkontactprivate.so.*.*
+%{_libdir}/libkontactprivate.so.*.*
 %{_desktopdir}/org.kde.kontact.desktop
 %{_datadir}/config.kcfg/kontact.kcfg
 %{_iconsdir}/hicolor/*x*/apps/kontact.png
